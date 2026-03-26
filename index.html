@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Giovanna</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #eaddd8;
+            --text-dark: #3a3330;
+            --text-light: #7a6e69;
+            --accent-bg: #d9cec9;
+            --white: #ffffff;
+            --font-title: 'Great Vibes', cursive;
+            --font-text: 'Playfair Display', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            font-family: var(--font-text);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .cursive {
+            font-family: var(--font-title);
+            font-weight: normal;
+        }
+
+        /* Ajuste para que o link não caia atrás do header fixo */
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        /* --- HEADER FIXO COM BLUR --- */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            
+            /* Efeito de Vidro (Glassmorphism) */
+            background-color: rgba(234, 221, 216, 0.7); /* Cor do fundo com transparência */
+            backdrop-filter: blur(12px); /* Desfoque do que está atrás */
+            -webkit-backdrop-filter: blur(12px); /* Suporte para Safari */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .logo-icon img {
+            height: 40px; /* Ajuste conforme o tamanho da sua logo */
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 2.2rem;
+            line-height: 0.8;
+            display: flex;
+            flex-direction: column;
+        }
+        .logo-text span {
+            font-size: 1.2rem;
+            margin-left: 20px;
+        }
+
+        .top-nav nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        .top-nav nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 1.3rem;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .top-nav nav a:hover {
+            color: var(--text-dark);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background-color: var(--white);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-bg-image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('BackGround_Peonias2.png');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .hero-white-curve {
+            position: absolute;
+            top: 0;
+            left: -10%;
+            width: 65%;
+            height: 100%;
+            background-color: var(--white);
+            border-radius: 0 40% 0 100% / 0 80% 0 0;
+            z-index: 2;
+            box-shadow: 10px 0 30px rgba(0,0,0,0.05);
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 10;
+            width: 50%;
+            padding-left: 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-text p.subtitle {
+            font-size: 1.8rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .hero-text h1 {
+            font-size: 6.5rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            margin-left: 10px;
+        }
+
+        .hero-text p.durante {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+            margin-left: 5px;
+        }
+
+        .counter-box {
+            background-color: #dedede; 
+            padding: 10px 30px;
+            width: 100%;
+            max-width: 450px;
+            margin-left: 0%; 
+            padding-left: 10%; 
+            text-align: center;
+            display: inline-block;
+        }
+
+        .counter-box span {
+            font-size: 3rem;
+            color: var(--text-light);
+        }
+
+        .hero-wave {
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            z-index: 15;
+        }
+
+        /* --- SEÇÕES --- */
+        .flores {
+            padding: 80px 10% 50px;
+            text-align: center;
+        }
+        .flores h2 {
+            font-size: 4rem;
+            margin-bottom: 40px;
+            text-align: right;
+        }
+        .flores-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .flor-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .flor-img-R, .flor-img-P, .flor-img-O {
+            width: 300px;
+            height: 350px;
+            object-fit: cover;
+            border: 5px solid var(--white);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+        }
+        .flor-img-R { border-radius: 0 100px 0 100px; }
+        .flor-img-P { border-radius: 80px 80px 10px 10px; }
+        .flor-img-O { border-radius: 100px 0 100px 0; }
+
+        .flor-item span {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+        }
+
+        .filmes {
+            padding: 50px 10%;
+        }
+        .filmes h2 {
+            font-size: 4rem;
+            margin-bottom: 40px;
+        }
+        .filme-row {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .filme-row img {
+            width: 300px;
+            border-radius: 10px;
+        }
+        .filme-row p {
+            flex: 1;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-light);
+        }
+
+        .hobbys {
+            padding: 80px 0;
+            background-color: var(--accent-bg);
+            position: relative;
+        }
+        .hobbys-divider {
+            background-image: repeating-linear-gradient(90deg, #faece7, #faece7 20px, transparent 20px, transparent 40px);
+            height: 40px;
+            width: 100%;
+            opacity: 0.5;
+            position: absolute;
+            top: 0;
+        }
+        .hobbys h2 {
+            font-size: 4rem;
+            text-align: right;
+            padding-right: 10%;
+            margin-bottom: 40px;
+        }
+        .hobby-item {
+            display: flex;
+            align-items: center;
+            padding: 30px 10%;
+            gap: 40px;
+        }
+        .hobby-item.reverse {
+            flex-direction: row-reverse;
+        }
+        .hobby-item img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .hobby-item .hobby-text {
+            flex: 1;
+        }
+        .hobby-text h3 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .hobby-text p {
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        .gostos {
+            padding: 80px 10%;
+            text-align: center;
+        }
+        .gostos h2 {
+            font-size: 4rem;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .carousel-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        .carousel-slide {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-slide img {
+            width: 100%;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 50%;
+            color: var(--text-dark);
+            z-index: 10;
+        }
+        .prev-btn { left: 10px; }
+        .next-btn { right: 10px; }
+
+        @media (max-width: 768px) {
+            .hero-white-curve {
+                width: 100%;
+                border-radius: 0 0 50% 50% / 0 0 10% 10%;
+                height: 60%;
+                left: 0;
+            }
+            .hero-text {
+                width: 100%;
+                margin-top: -10%;
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+            .hero-text h1 { font-size: 4rem; }
+            .counter-box { padding-left: 0; }
+            .top-nav nav { display: none; }
+            .filme-row, .hobby-item { flex-direction: column !important; text-align: center; }
+            .flores-grid { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-nav">
+        <a href="#" class="logo">
+            <span class="logo-icon"><img src="logo2.png" alt="Logo"></span> 
+            <div class="logo-text cursive">Gi<span>hh</span></div>
+        </a>
+        <nav>
+            <a href="#flores">Flores</a>
+            <a href="#filmes">Filmes</a>
+            <a href="#hobbys">Hobbys</a>
+            <a href="#gostos">Gostos</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-bg-image"></div>
+        <div class="hero-white-curve"></div>
+        
+        <div class="hero-text">
+            <p class="subtitle">O que aprendi sobre...</p>
+            <h1>Giovanna</h1>
+            <p class="durante">Durante...</p>
+            <div class="counter-box">
+                <span class="cursive" id="days-counter">Calculando...</span>
+            </div>
+        </div>
+
+        <svg class="hero-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#eaddd8" fill-opacity="1" d="M0,288L120,282.7C240,277,480,267,720,266.7C960,267,1200,277,1320,282.7L1440,288L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
+        </svg>
+    </section>
+
+    <section class="flores" id="flores">
+        <h2>Flores</h2>
+        <div class="flores-grid">
+            <div class="flor-item">
+                <img src="rosa.png" alt="Rosa" class="flor-img-R">
+                <span>Rosa</span>
+            </div>
+            <div class="flor-item">
+                <img src="peonia.png" alt="Peônias" class="flor-img-P">
+                <span>Peônias</span>
+            </div>
+            <div class="flor-item">
+                <img src="orquidea.png" alt="Orquídeas" class="flor-img-O">
+                <span>Orquídeas</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="filmes" id="filmes">
+        <h2>Filmes</h2>
+        <div class="filme-row">
+            <img src="Filme1.png" alt="Filme 1">
+            <p>  Aprendi que, assim como Jo, você sonha grande e não tem medo de ser quem é. Vejo também a doçura tranquila de Beth, que transforma pequenos gestos em algo profundamente bonito. Além disso, a sensibilidade e o coração generoso de Meg, sempre buscando cuidar e fazer o bem ao redor. E, como Amy, existe um brilho único em você (Um tanto “Gracioso”) uma mistura de determinação, sensibilidade e vontade de tornar o mundo um pouco mais bonito.</p>
+        </div>
+        <div class="filme-row" style="flex-direction: row-reverse;">
+            <img src="Filme2.png" alt="Filme 2">
+            <p>Esses eu ainda não vi para dizer como vejo eles em você e em seus gostos... poxa, vamos ter que marcar de ver</p>
+        </div>
+    </section>
+
+    <section class="hobbys" id="hobbys">
+        <div class="hobbys-divider"></div>
+        <h2>Hobbys</h2>
+        
+        <div class="hobby-item">
+            <img src="teclado.png" alt="Piano" style="border-radius: 50% 50% 50% 0;">
+            <div class="hobby-text">
+                <p class="cursive" style="font-size: 2.5rem;">A melhor tecladista que eu conheço</p>
+            </div>
+        </div>
+
+        <div class="hobby-item reverse">
+            <img src="livros.png" alt="Leitura">
+            <div class="hobby-text">
+                <h3>Leitura</h3>
+                <p>Ainda não terminou o livro que eu dei</p>
+            </div>
+        </div>
+
+        <div class="hobby-item">
+            <img src="bale.png" alt="Balé" style="border-radius: 0px 20px 0 20px;">
+            <div class="hobby-text">
+                <h3>Balé</h3>
+                <p>Descontinuado, infelizmente não vou ver você apresentando lago dos cisnes</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gostos" id="gostos">
+        <h2>Gostos</h2>
+        <div class="carousel-container">
+            <button class="carousel-btn prev-btn">&#10094;</button>
+            <div class="carousel-slide">
+                <img src="hersheys.png" alt="Chocolate Hershey's">
+                <img src="hello.png" alt="Hello Kitty">
+                <img src="cafe.png" alt="Café Latte">
+                <img src="gato.png" alt="Gato fofo">
+                <img src="eu.png" alt="Gatinho escrito EU?">
+            </div>
+            <button class="carousel-btn next-btn">&#10095;</button>
+        </div>
+    </section>
+
+    <script>
+        // Lógica do Contador de Dias
+        function calculateDays() {
+            const startDate = new Date('2025-02-20T00:00:00');
+            const currentDate = new Date();
+            const diffTime = Math.abs(currentDate - startDate);
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            document.getElementById('days-counter').textContent = diffDays + " dias";
+        }
+        calculateDays();
+
+        // Lógica do Carrossel
+        const carouselSlide = document.querySelector('.carousel-slide');
+        const carouselImages = document.querySelectorAll('.carousel-slide img');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+
+        let counter = 0;
+
+        function updateCarousel() {
+            const size = carouselImages[0].clientWidth;
+            carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (counter >= carouselImages.length - 1) {
+                counter = 0;
+            } else {
+                counter++;
+            }
+            updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (counter <= 0) {
+                counter = carouselImages.length - 1;
+            } else {
+                counter--;
+            }
+            updateCarousel();
+        });
+
+        window.addEventListener('resize', updateCarousel);
+    </script>
+</body>
+</html>
